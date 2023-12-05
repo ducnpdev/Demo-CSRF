@@ -1,0 +1,15 @@
+# github.com/felixge/httpsnoop v1.0.3
+## explicit; go 1.13
+github.com/felixge/httpsnoop
+# github.com/gorilla/csrf v1.7.2
+## explicit; go 1.20
+github.com/gorilla/csrf
+# github.com/gorilla/handlers v1.5.2
+## explicit; go 1.20
+github.com/gorilla/handlers
+# github.com/gorilla/mux v1.8.1
+## explicit; go 1.20
+github.com/gorilla/mux
+# github.com/gorilla/securecookie v1.1.2
+## explicit; go 1.20
+github.com/gorilla/securecookie
