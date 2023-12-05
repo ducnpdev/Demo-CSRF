@@ -213,12 +213,15 @@ func (cs *csrf) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	// An error represents either a cookie that failed HMAC validation
 	// or that doesn't exist.
 	realToken, err := cs.st.Get(r)
+	fmt.Println("realToken:", string(realToken))
+
 	if err != nil || len(realToken) != tokenLength {
 		// If there was an error retrieving the token, the token doesn't exist
 		// yet, or it's the wrong length, generate a new token.
 		// Note that the new token will (correctly) fail validation downstream
 		// as it will no longer match the request token.
 		realToken, err = generateRandomBytes(tokenLength)
+		fmt.Println("realToken", string(realToken))
 		if err != nil {
 			r = envError(r, err)
 			cs.opts.ErrorHandler.ServeHTTP(w, r)

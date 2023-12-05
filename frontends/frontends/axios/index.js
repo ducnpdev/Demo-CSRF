@@ -1,8 +1,6 @@
-// make GET request to backend on page load in order to obtain
-// a CSRF Token and load it into the Axios instance's headers
-// https://github.com/axios/axios#creating-an-instance
 const initializeAxiosInstance = async (url) => {
     try {
+        console.error("url",url)
         let resp = await axios.get(url, {withCredentials: true});
         console.log(resp);
         document.getElementById("get-request-full-response").innerHTML = JSON.stringify(resp);
@@ -22,9 +20,31 @@ const initializeAxiosInstance = async (url) => {
     }
 };
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  
+  async function example() {
+    console.log('Start');
+    await sleep(5000); // sleep for 1000 milliseconds (1 second)
+    console.log('End');
+  }
+  
+
 const post = async (axiosInstance, url) => {
     try {
+        
+        console.log("sleep")
+        example();
+        console.log("sleep1 ")
+        example();
+        console.log("sleep 1.1")
+        example();
+        console.log("sleep1 2")
+
+
         let resp = await axiosInstance.post(url);
+
         console.log(resp);
         document.getElementById("post-request-full-response").innerHTML = JSON.stringify(resp);
     } catch (err) {
@@ -42,9 +62,16 @@ const parseCSRFToken = (resp) => {
     return csrfToken
 }
 
-const url = "http://localhost:8080/api";
+const urlGetss = "http://localhost:8080/api";
+const urlPost = "http://localhost:8081/api";
 const csrfTokenHeader = "X-CSRF-Token";
-initializeAxiosInstance(url)
+
+
+initializeAxiosInstance(urlGetss)
     .then(axiosInstance => {
-        post(axiosInstance, url);
+        post(axiosInstance, urlPost);
     });
+
+
+
+console.log("111111")

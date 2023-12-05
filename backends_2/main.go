@@ -22,7 +22,7 @@ func main() {
 	router.Use(loggingMiddleware)
 
 	CSRFMiddleware := csrf.Protect(
-		[]byte("place-your-32-byte-long-key-her1"),
+		[]byte("place-your-32-byte-long-key-here"),
 		csrf.Secure(true),                  // false in development only!
 		csrf.RequestHeader("X-CSRF-Token"), // Must be in CORS Allowed and Exposed Headers
 	)
@@ -45,12 +45,12 @@ func main() {
 
 	server := &http.Server{
 		Handler:      CORSMiddleware(router),
-		Addr:         "localhost:8080",
+		Addr:         "localhost:8081",
 		ReadTimeout:  60 * time.Second,
 		WriteTimeout: 60 * time.Second,
 	}
 
-	fmt.Println("starting http server on localhost:8080")
+	fmt.Println("starting http server on localhost:8081")
 	log.Panic(server.ListenAndServe())
 }
 

@@ -30,11 +30,11 @@ func main() {
 
 	server := &http.Server{
 		Handler:      router,
-		Addr:         "localhost:8081",
+		Addr:         "localhost:3000",
 		ReadTimeout:  60 * time.Second,
 		WriteTimeout: 60 * time.Second,
 	}
 
-	fmt.Println("starting http server on localhost:8081")
+	fmt.Println("starting http server on localhost:3000")
 	log.Panic(server.ListenAndServe())
 }
